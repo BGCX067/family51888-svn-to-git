@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+ 
+ 
+ 
+ 
+<package name="userPackage" namespace="/" extends="struts-default">
+
+
+<!-- 用户 action -->
+<action name="user_*" class="userAction" method="{1}" >
+<result name="success">/admin/userPage.jsp</result>
+<result name="adminPage">/admin.jsp</result>
+<result name="indexs">/index.jsp</result>
+<result name="ok">/admin/userReg/ok.jsp</result>
+<result name="showUser">/admin/userAuthorities.jsp</result>
+<result name="error">/admin/userReg/error.jsp</result>
+<result name="updateEidt">/admin/userReg/updateEdit.jsp</result>
+<!--  -->
+<result name="deleteUserOK" type="redirectAction">user_showUserInfo.action</result>
+<result name="updateOk" type="redirectAction">user_showUserInfo.action</result>
+<result name="addUsersAndShowRole">/admin/userReg/regsiter.jsp</result>
+
+</action>
+
+<action name="users_*" class="userRegisterAction" method="{1}">
+<result name="ok">/admin/userReg/ok.jsp</result>
+<result name="error">/admin/userReg/error.jsp</result>
+<result name="input">/admin/userReg/regsiter.jsp</result>
+
+<!--防止表单重提交 -->
+<result name="invalid.token">/admin/userReg/alert.jsp</result>
+<interceptor-ref name="token"/>
+<interceptor-ref name="defaultStack"/>
+
+
+</action>
+
+</package>
+
+
+</struts>

@@ -1,0 +1,22 @@
+
+2012-4-24  v0.1
+
+客户端IP和端口配置文件
+client_config.txt
+服务器端口配置文件
+server_config.txt
+
+服务器端：ServerMainClass.java
+客户端：ClientMainClass.java
+
+2012-4-29  v0.2
+
+BUG: 关闭客户端出现异常
+java.io.EOFException
+	at java.io.ObjectInputStream$BlockDataInputStream.peekByte(Unknown Source)
+	at java.io.ObjectInputStream.readObject0(Unknown Source)
+	at java.io.ObjectInputStream.readObject(Unknown Source)
+	at qq.client.ClientThread.run(ClientThread.java:53)
+	
+					Response res=(Response)ois.readObject();
+	

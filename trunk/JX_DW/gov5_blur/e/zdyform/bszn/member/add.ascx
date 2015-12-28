@@ -1,0 +1,33 @@
+﻿<% @ Control  Language="C#" Inherits="PageAdmin.paform"%>
+<% @ Import NameSpace="System.Data"%>
+<% @ Import NameSpace="System.Data.OleDb"%>
+<%Start();%>
+<tr><td align=right class='tdhead'>办事项目<span style='color:#ff0000'>*</span></td><td><input type=text name='title' id='title' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("title"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>事项依据</td><td><input type=text name='pa_bsyj' id='pa_bsyj' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_bsyj"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>办理对象及范围</td><td><input type=text name='pa_dxfw' id='pa_dxfw' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_dxfw"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>办理条件<span style='color:#ff0000'>*</span></td><td><textarea name='pa_bltj' id='pa_bltj'150  ><%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_bltj"));}%></textarea><script type='text/javascript' src='/e/incs/fckeditor/fckeditor.js'></script><script  type='text/javascript'>var FCKeditor = new FCKeditor('pa_bltj');FCKeditor.BasePath = '/e/incs/fckeditor/';FCKeditor.Height = 150;FCKeditor.Config['LinkUpload'] = true;FCKeditor.Config['ImageUpload'] =true;FCKeditor.Config['FlashUpload'] =true;FCKeditor.Config['LinkBrowser'] = false;FCKeditor.Config['ImageBrowser'] =false;FCKeditor.Config['FlashBrowser'] =false;FCKeditor.ToolbarSet ='Small';FCKeditor.ReplaceTextarea();</script></td></tr>
+<tr><td align=right class='tdhead'>申办材料<span style='color:#ff0000'>*</span></td><td><textarea name='pa_sbcl' id='pa_sbcl'150  ><%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_sbcl"));}%></textarea><script type='text/javascript' src='/e/incs/fckeditor/fckeditor.js'></script><script  type='text/javascript'>var FCKeditor = new FCKeditor('pa_sbcl');FCKeditor.BasePath = '/e/incs/fckeditor/';FCKeditor.Height = 150;FCKeditor.Config['LinkUpload'] = true;FCKeditor.Config['ImageUpload'] =true;FCKeditor.Config['FlashUpload'] =true;FCKeditor.Config['LinkBrowser'] = false;FCKeditor.Config['ImageBrowser'] =false;FCKeditor.Config['FlashBrowser'] =false;FCKeditor.ToolbarSet ='Small';FCKeditor.ReplaceTextarea();</script></td></tr>
+<tr><td align=right class='tdhead'>办理流程<span style='color:#ff0000'>*</span></td><td><textarea name='pa_bllc' id='pa_bllc'150  ><%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_bllc"));}%></textarea><script type='text/javascript' src='/e/incs/fckeditor/fckeditor.js'></script><script  type='text/javascript'>var FCKeditor = new FCKeditor('pa_bllc');FCKeditor.BasePath = '/e/incs/fckeditor/';FCKeditor.Height = 150;FCKeditor.Config['LinkUpload'] = true;FCKeditor.Config['ImageUpload'] =true;FCKeditor.Config['FlashUpload'] =true;FCKeditor.Config['LinkBrowser'] = false;FCKeditor.Config['ImageBrowser'] =false;FCKeditor.Config['FlashBrowser'] =false;FCKeditor.ToolbarSet ='Small';FCKeditor.ReplaceTextarea();</script></td></tr>
+<tr><td align=right class='tdhead'>办理时限</td><td><input type=text name='pa_blsx' id='pa_blsx' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_blsx"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>费用情况</td><td><input type=text name='pa_fy' id='pa_fy' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_fy"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>承办机构<span style='color:#ff0000'>*</span></td><td><input type=text name='pa_bljg' id='pa_bljg' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_bljg"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>办理地点、邮编<span style='color:#ff0000'>*</span></td><td><input type=text name='pa_ddyb' id='pa_ddyb' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_ddyb"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>办理时间<span style='color:#ff0000'>*</span></td><td><input type=text name='pa_blsj' id='pa_blsj' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_blsj"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>联系方式<span style='color:#ff0000'>*</span></td><td><input type=text name='pa_lxfs' id='pa_lxfs' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_lxfs"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>监督电话</td><td><input type=text name='pa_jddh' id='pa_jddh' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_jddh"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>网上咨询</td><td><input type=text name='pa_wszx' id='pa_wszx' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_wszx"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>网上办理</td><td><input type=text name='pa_wsbl' id='pa_wsbl' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_wsbl"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>状态查询</td><td><input type=text name='pa_ztcx' id='pa_ztcx' value="<%if(post=="add"){Response.Write("");}else{Response.Write(r("pa_ztcx"));}%>" style='width:350px'   maxlength='100' ></td></tr>
+<tr><td align=right class='tdhead'>表格下载<br><input type='button' value='增加文件' class='f_bt' onclick="open_files('<%=SiteId%>','0','bszn','pa_fj','files','<%=InforId%>')"><br><input type='button' id='Edit_pa_fj' value='刷新文件' class='f_bt' onclick="Iframe_Submit('iframe_pa_fj')" style='display:none'></td><td><div id='pa_fj_box' style='width:98%;border:1px solid #cccccc;background-color:#ffffff;padding:5px 5px 5px 5px'><input type=hidden value='0' name='pa_fj' id='pa_fj'><iframe  id='iframe_pa_fj' name='iframe_pa_fj' allowtransparency='true' src='/e/aspx/file_list.aspx?id=<%=InforId%>&table=bszn&field=pa_fj&fieldtype=files&sid=<%=SiteId%>&from=member' frameborder=0 scroling=auto height=150px width=100% marginwidth=0 marginheight=0 align=center></iframe></div></td></tr><tr><td colspan=2 align=center><input type='hidden' name='mustname' value='办事项目,办理条件,申办材料,办理流程,承办机构,办理地点、邮编,办理时间,联系方式,'><input type='hidden' name='mustfield' value='title,pa_bltj,pa_sbcl,pa_bllc,pa_bljg,pa_ddyb,pa_blsj,pa_lxfs,'><input type='hidden' name='musttype' value='text,editor,editor,editor,text,text,text,text,'></td></tr>
+<script  type='text/javascript'>
+function bszn_zdycheck(){
+return true;
+}
+</script>
+<%End();%>
+
+
+
+
+
+

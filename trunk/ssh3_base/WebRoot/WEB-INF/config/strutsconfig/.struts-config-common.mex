@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/pubAction.do" location="0,382" dimension="362,104" />
+  <StrutsActivity path="/redirect.do" location="1434,0" dimension="362,104" />
+  <StrutsActivity path="/WEB-INF/jsp/top.jsp" location="954,284" dimension="156,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_resourceManager.jsp" location="650,450" dimension="263,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_resourceList.jsp" location="50,150" dimension="229,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_resourceReview.jsp" location="50,550" dimension="250,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_managerGuide.jsp" location="0,284" dimension="245,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_log.jsp" location="345,284" dimension="178,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_linkmanager.jsp" location="623,284" dimension="231,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_dbconfig.jsp" location="1210,284" dimension="211,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_node.jsp" location="1521,284" dimension="189,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_advanced.jsp" location="1810,284" dimension="215,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_monitor.jsp" location="2125,284" dimension="205,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_link.jsp" location="2430,284" dimension="179,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_domain.jsp" location="2709,284" dimension="203,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_domainGuide.jsp" location="3012,284" dimension="237,53" />
+  <StrutsActivity path="/WEB-INF/jsp/sample/mibList.jsp" location="350,550" dimension="224,53" />
+  <StrutsActivity path="/WEB-INF/jsp/sample/left_sample.jsp" location="650,650" dimension="248,53" />
+  <StrutsActivity path="/WEB-INF/jsp/left_sample.jsp" />
+  <StrutsTransition id="/redirect.do,sample,/WEB-INF/jsp/sample/left_sample.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1725,104" />
+      <AbsolutePoint location="1725,676" />
+      <AbsolutePoint location="898,676" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,resourceList,/WEB-INF/jsp/left_resourceList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1615,52" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,top,/WEB-INF/jsp/top.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1476,104" />
+      <AbsolutePoint location="1476,224" />
+      <AbsolutePoint location="1032,224" />
+      <AbsolutePoint location="1032,284" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,sample,/WEB-INF/jsp/sample/mibList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1434,82" />
+      <AbsolutePoint location="538,82" />
+      <AbsolutePoint location="538,550" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,resourceReview,/WEB-INF/jsp/left_resourceReview.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1434,52" />
+      <AbsolutePoint location="-75,52" />
+      <AbsolutePoint location="-75,576" />
+      <AbsolutePoint location="50,576" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,resourceManager,/WEB-INF/jsp/left_resourceManager.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1506,104" />
+      <AbsolutePoint location="1506,476" />
+      <AbsolutePoint location="913,476" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/redirect.do,sample,/WEB-INF/jsp/left_sample.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1615,52" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

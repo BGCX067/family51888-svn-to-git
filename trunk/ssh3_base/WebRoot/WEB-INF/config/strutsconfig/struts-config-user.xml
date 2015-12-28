@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+		<form-bean name="userForm"
+			type="com.strongit.itsm.user.form.UserForm" />
+	</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+  		<action path="/userAction" parameter="method" scope="request" attribute="userForm" name="userForm"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="listUser" path="/WEB-INF/jsp/user/listUser.jsp"></forward>	
+		<forward name="addUser" path="/WEB-INF/jsp/user/addUser.jsp"></forward>	
+		<forward name="updateUser" path="/WEB-INF/jsp/user/updateUser.jsp"></forward>
+		</action>
+			
+  </action-mappings>
+  <message-resources parameter="ApplicationResources" />
+</struts-config>
+

@@ -1,0 +1,1 @@
+<% response.sendRedirect("gradeAction.do?method=listGrade"); %>

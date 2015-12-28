@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans>
+		<form-bean name="gradeForm"
+			type="com.strongit.itsm.example.form.GradeForm" />
+	</form-beans>
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+  		<action path="/gradeAction" parameter="method" scope="request" attribute="gradeForm" name="gradeForm"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+		<forward name="listGrade" path="/WEB-INF/jsp/grade/listGrade.jsp"></forward>	
+		<forward name="addGrade" path="/WEB-INF/jsp/grade/addGrade.jsp"></forward>	
+		<forward name="updateGrade" path="/WEB-INF/jsp/grade/updateGrade.jsp"></forward>
+		</action>
+			
+  </action-mappings>
+  <message-resources parameter="ApplicationResources" />
+</struts-config>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 请求参数的编码方式 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定被struts2处理的请求后缀类型，多个用逗号隔开。 -->
+	<constant name="struts.action.extension" value="action,do" />
+	<!-- 是否开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 是否使用struts的开发模式，开发模式会有更多的调试信息，默认值为false(生产环境下使用)。 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 设置浏览器是否缓存静态内容，默认值为true(生产环境下使用),开发阶段最好关闭。 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!--默认主题-->
+	<constant name="struts.ui.theme" value="simple" />  
+	<constant name="struts.codebehind.defaultPackage" value="default" />
+	
+	<package name="default" namespace="/" extends="struts-default,jasperreports-default">
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+		
+		<!-- 报表输出Action -->  
+		<action name="report" class="com.lanjh.report.action.ReportAction">  
+		    <result name="success" type="jasper">  
+		        <param name="location">/reportFiles/${name}.jasper</param>                   
+		        <param name="connection">connection</param>  
+		    <param name="format">${format}</param>  
+		    <param name="reportParameters">para</param>
+		    <param name="documentName">${name}</param>
+		    <param name="imageServletUrl"><![CDATA[/image?image=]]></param>
+		    <param name="dataSource">result.list</param>  <!-- 注意：connection和dataSource不能共存。两个共存时，优先级是connection高。  -->  
+		    </result>  
+		</action>  
+		
+	</package>
+
+</struts>

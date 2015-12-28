@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+	<!-- 对应实体类的Action  -->
+	<bean name="/userAction"
+		class="com.strongit.itsm.user.action.UserAction">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<!-- 对应实体类EBO业务实现类   -->
+	<bean id="userService"
+		class="com.strongit.itsm.user.service.impl.UserServiceImpl">
+		<property name="dao" ref="userDAOImpl" />
+	</bean>
+
+	<!-- 对应实体类DAO的实现类  -->
+	<bean id="userDAOImpl"
+		class="com.strongit.itsm.user.dao.impl.UserDAOHibernateImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

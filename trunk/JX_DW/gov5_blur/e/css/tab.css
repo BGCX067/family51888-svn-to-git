@@ -1,0 +1,19 @@
+﻿/*tab却换*/
+.tab{position:relative}
+.tab .tabheader{clear:both;height:23px;text-align:left;overflow:hidden}
+.tab .fd{position:absolute;top:-26px;left:160px;}
+.tab .tabcontent{clear:both;height:100%}
+
+.tab .tab_t dd.current{color:#ffffff;background:url(images/tab_over.gif) no-repeat 0 0;}
+.tab .tab_t dd{color:#0075DB;float:left;width:75px;height:22px;padding:1px 0px 0 0px;cursor:pointer;text-align:center}
+
+.tab .tab_t_1 dd.current{font-weight:bold}
+.tab .tab_t_1 dd{color:#333333;float:left;width:80px;height:19px;margin-right:10px;cursor:pointer;text-align:center;border:1px solid #cccccc;}
+
+
+.tab_c dd{display:none} /*公用隐藏内容dd样式*/
+
+
+.tablist{padding:5px 0 0 10px;height:85px;width:100%;overflow:hidden;text-align:left;}
+.tablist li{float:left;display:inline;width:75px;height:30px;}
+

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans:beans
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security.xsd">
+   
+  
+     <http pattern="/image" security="none"/>
+    <http  entry-point-ref="myAuthenticationEntryPoint" access-denied-page="/error/page403.jsp">
+      <intercept-url pattern="/" access="ROLE_ANONYMOUS"/> <anonymous username="游客"/>
+      <!-- 只要登 陆的用户都可以访问项目资源    除了受保护的次源 --> 
+      <intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
+       <!-- 认证和授权 -->
+      <custom-filter ref="myAuthenticationFilter" position="FORM_LOGIN_FILTER"  />
+      <custom-filter ref="myAuthorizationFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+      <!-- 切换用户 -->
+      <custom-filter position="SWITCH_USER_FILTER" ref="switchUserProcessingFilter" />
+      <!-- 获取 ip  -->
+      <custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrentSessionFilter"/>
+      <!-- 用户退出  session无效 -->
+     <logout invalidate-session="true"  logout-url="/j_spring_security_logout" />
+     
+     <!-- 保存cookie  保存用户名密码多长时间-->
+     <!--60*60*24*7=604800=  一个星期的秒数  -->
+     <remember-me key="myApp" token-validity-seconds="604800" data-source-ref="authoritiesData" />
+     
+     <!-- 用户登陆  默认跳转页面 and  失败面页 -->
+     <form-login default-target-url="/index.jsp" authentication-failure-url="/login.jsp?error=true"/>
+      <!-- 会话管理  默认30分钟 ，空闲30分钟后，自动销毁 -->
+     <session-management  invalid-session-url="/login.jsp"  session-authentication-strategy-ref="currentControllerStrategy"/>
+    </http>
+    
+    <!--注意必须放在用来验证权限的FilterSecurityInterceptor之后，这样可以控制当前用户是否拥有切换用户的权限 -->
+    <beans:bean id="switchUserProcessingFilter"
+        class="org.springframework.security.web.authentication.switchuser.SwitchUserFilter" autowire="byType">
+    <beans:property name="targetUrl" value="/manager.jsp"/>
+    
+    </beans:bean>
+    
+     <!-- 未登录的切入点 -->
+    <beans:bean id="myAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <beans:property name="loginFormUrl" value="/login.jsp"/>
+    </beans:bean>
+    
+    
+<!-- 提示信息 国际化-->
+<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+<beans:property name="basename" value="classpath:messages_zh_CN"/>
+</beans:bean>
+
+
+<!-- 获取用户  ip 和用户绑定，（如是果设了最大会话为1，不用担心没注销用户，无法再登陆！）
+             这样在同一个电脑是可以重复登陆， -->
+ <beans:bean id="concurrentSessionFilter"
+        class="org.springframework.security.web.session.ConcurrentSessionFilter">
+ <beans:property name="sessionRegistry" ref="sessionRegistry"/>
+</beans:bean>
+
+
+<beans:bean id="sessionRegistry" class="accp.scurity.service.SmartSessionRegistry"/>
+
+<beans:bean id="currentControllerStrategy"	class="accp.myFilter.SmartConcurrentSessionControlStrategy">
+	<beans:constructor-arg ref="sessionRegistry"/> 
+     <!--  允许同时登陆几个，如果溢出这个数则报异常   value="true"=不允许把在线用户踢出去   --> 
+	<beans:property name="exceptionIfMaximumExceeded" value="true"/>
+	<beans:property name="maximumSessions" value="1"/>
+	</beans:bean> 
+	
+<!-- 记录日志 -->
+ <beans:bean class="accp.myFilter.AuditListener"/>
+ 
+   <!-- myAuthenticationFilter************************************************* -->
+     <!-- 自定义UserDetailsService认证  -->
+    <beans:bean id="userDetailsService" class="accp.myFilter.UserInfoService">
+    <beans:property name="baseUserServices" ref="baseServices"/>
+    </beans:bean>
+    
+     <!-- 用户拥有的权限：登录后取得用户所保有的权限信息  "-->
+    <authentication-manager alias="myAuthenticationManager">
+        <authentication-provider user-service-ref="userDetailsService" >
+        	<!-- md5加密   -->
+		   <password-encoder hash="md5">
+		   <!-- 盐值加密 -->
+		      <salt-source user-property="username"/>
+		    </password-encoder>
+        </authentication-provider>
+    </authentication-manager>
+    
+    
+    <!-- 登录验证器：用户有没有登录的资格 -->
+    <beans:bean id="myAuthenticationFilter" class="accp.myFilter.MyAuthenticationFilter">
+        <beans:property name="authenticationManager" ref="myAuthenticationManager" />
+        
+        <beans:property name="filterProcessesUrl" value="/j_spring_security_check" />
+        <beans:property name="authenticationSuccessHandler">
+            <beans:bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+                <beans:property name="defaultTargetUrl" value="/index.jsp" />
+            </beans:bean>
+        </beans:property>
+        <beans:property name="authenticationFailureHandler">
+            <beans:bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+                <beans:property name="defaultFailureUrl" value="/login.jsp" />
+            </beans:bean>
+        </beans:property>
+        <beans:property name="baseUserServices" ref="baseServices" />
+    </beans:bean>
+    
+    
+    
+    <!-- 认证过滤器：判断用户有没有访问特定资源的权限 -->
+    <beans:bean id="myAuthorizationFilter" class="accp.myFilter.MyAuthorizationFilter">
+        <!-- 用户拥有的权限 -->
+        <beans:property name="authenticationManager" ref="myAuthenticationManager" />
+        <!-- 用户是否拥有所请求资源的权限 -->
+        <beans:property name="accessDecisionManager">
+            <beans:bean class="accp.myFilter.MyAccessDecisionManager" />
+        </beans:property>
+        <!-- 资源与权限对应关系 -->
+        <beans:property name="securityMetadataSource">
+            <beans:bean class="accp.myFilter.MySecurityMetadataSource">
+                <beans:constructor-arg name="baseRescServices" ref="baseServices" />
+            </beans:bean>
+        </beans:property>
+    </beans:bean>
+    
+     <!-- ************************************************* -->   
+ 
+</beans:beans>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<file>
+	<fileType>*.jpg;*.jpeg;*.gif;*.png;*.bmp</fileType>
+	<fileSize>204800</fileSize>
+	<fileRootPath>upload</fileRootPath>
+	<fileDicPolicy>YEAR-MONTH</fileDicPolicy>
+	<fileNamePolicy>NAME</fileNamePolicy>
+</file>

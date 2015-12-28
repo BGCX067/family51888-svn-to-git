@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="baseForm"
+			type="org.apache.struts.validator.LazyValidatorForm">
+		</form-bean>
+	</form-beans>
+	<global-exceptions>
+		<exception key="notepress.error"
+			path="/WEB-INF/jsp/common/result.jsp" type="java.lang.Exception"
+			handler="org.notepress.util.struts.SimpleExceptionHandler" />
+	</global-exceptions>
+	<global-forwards>
+		<forward name="success" path="success" />
+		<forward name="error" path="error" />
+	</global-forwards>
+	<action-mappings>
+		<!--path为访问路径；parameter为action的方法名。此种方式可避免将方法名直接暴露在URL中。-->
+
+		<action name="baseForm" path="/loginSelect" scope="request"
+			type="org.notepress.security.action.AccountAction"
+			parameter="loginSelect" validate="false" />
+		<!--控制台首页-->
+		<action name="baseForm" path="/console" scope="request"
+			type="org.notepress.console.action.ConsoleAction" parameter="index"
+			validate="false">
+			<forward name="target" path="console" />
+		</action>
+		<!--控制台首页-->
+
+		<!--媒体管理-->
+		<action name="baseForm" path="/media" scope="request"
+			type="org.notepress.core.action.MediaAction" parameter="index"
+			validate="false">
+			<forward name="target" path="media" />
+		</action>
+		<action name="baseForm" path="/media.query" scope="request"
+			type="org.notepress.core.action.MediaAction" parameter="query"
+			validate="false" />
+		<action name="baseForm" path="/media.upload" scope="request"
+			type="org.notepress.core.action.MediaAction" parameter="upload"
+			validate="false" />
+		<action name="baseForm" path="/media.read" scope="request"
+			type="org.notepress.core.action.MediaAction" parameter="read"
+			validate="false" />
+		<action name="baseForm" path="/media.delete" scope="request"
+			type="org.notepress.core.action.MediaAction" parameter="delete"
+			validate="false" />
+		<!--媒体管理-->
+
+		<!--缩略图管理-->
+		<action name="baseForm" path="/thumbnail.upload" scope="request"
+			type="org.notepress.core.action.ThumbnailAction" parameter="upload"
+			validate="false" />
+		<action name="baseForm" path="/thumbnail.delete" scope="request"
+			type="org.notepress.core.action.ThumbnailAction"
+			parameter="deleteThumbnail" validate="false" />
+		<!--缩略图管理-->
+
+		<!--选项管理-->
+		<action name="baseForm" path="/option" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="index"
+			validate="false">
+			<forward name="target" path="option" />
+		</action>
+
+		<action name="baseForm" path="/option.query" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="query"
+			validate="false" />
+
+		<action name="baseForm" path="/option.create" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="create"
+			validate="false" />
+
+		<action name="baseForm" path="/option.read" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="read"
+			validate="false" />
+
+		<action name="baseForm" path="/option.update" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="update"
+			validate="false" />
+
+		<action name="baseForm" path="/option.delete" scope="request"
+			type="org.notepress.config.action.OptionAction" parameter="delete"
+			validate="false" />
+		<!--选项管理-->
+
+		<!--栏目管理-->
+		<action name="baseForm" path="/category" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="index"
+			validate="false">
+			<forward name="target" path="category" />
+		</action>
+
+		<action name="baseForm" path="/category.query" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="query"
+			validate="false" />
+
+		<action name="baseForm" path="/category.create" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="create"
+			validate="false" />
+
+		<action name="baseForm" path="/category.read" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="read"
+			validate="false" />
+
+		<action name="baseForm" path="/category.update" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="update"
+			validate="false" />
+
+		<action name="baseForm" path="/category.delete" scope="request"
+			type="org.notepress.core.action.CategoryAction" parameter="delete"
+			validate="false" />
+
+		<!--栏目管理-->
+
+		<!--故事管理-->
+		<action name="baseForm" path="/story" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="index"
+			validate="false">
+			<forward name="target" path="story" />
+		</action>
+
+		<action name="baseForm" path="/story.query" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="query"
+			validate="false" />
+
+		<action name="baseForm" path="/story.create" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="create"
+			validate="false" />
+
+		<action name="baseForm" path="/story.read" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="read"
+			validate="false" />
+
+		<action name="baseForm" path="/story.update" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="update"
+			validate="false" />
+
+		<action name="baseForm" path="/story.delete" scope="request"
+			type="org.notepress.core.action.StoryAction" parameter="delete"
+			validate="false" />
+
+		<!--故事管理-->
+
+		<!--文件夹管理-->
+		<action name="baseForm" path="/folder.query" scope="request"
+			type="org.notepress.core.action.FolderAction" parameter="query"
+			validate="false" />
+
+		<action name="baseForm" path="/folder.create" scope="request"
+			type="org.notepress.core.action.FolderAction" parameter="create"
+			validate="false" />
+
+		<action name="baseForm" path="/folder.read" scope="request"
+			type="org.notepress.core.action.FolderAction" parameter="read"
+			validate="false" />
+
+		<action name="baseForm" path="/folder.update" scope="request"
+			type="org.notepress.core.action.FolderAction" parameter="update"
+			validate="false" />
+
+		<action name="baseForm" path="/folder.delete" scope="request"
+			type="org.notepress.core.action.FolderAction" parameter="delete"
+			validate="false" />
+		<!--文件夹管理-->
+
+		<!--文件管理-->
+		<action name="baseForm" path="/file.create" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="create"
+			validate="false" />
+		<action name="baseForm" path="/file.query" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="query"
+			validate="false" />
+		<action name="baseForm" path="/file.read" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="read"
+			validate="false" />
+		<action name="baseForm" path="/file.update" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="update"
+			validate="false" />
+		<action name="baseForm" path="/file.delete" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="delete"
+			validate="false" />
+		<action name="baseForm" path="/file.status" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="updateStatus"
+			validate="false" />
+		<action name="baseForm" path="/file.attr" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="updateAttr"
+			validate="false" />
+		<action name="baseForm" path="/file.recommend" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="recommend"
+			validate="false" />
+		<action name="baseForm" path="/file.top" scope="request"
+			type="org.notepress.core.action.FileAction" parameter="top"
+			validate="false" />
+		<!--文件管理-->
+
+		<action name="baseForm" path="/member.reply" scope="request"
+			type="org.notepress.core.action.MemberAction" parameter="reply"
+			validate="false" />
+		<action name="baseForm" path="/member.index" scope="request"
+			type="org.notepress.core.action.MemberAction" parameter="index"
+			validate="false">
+			<forward name="target" path="member.index" />
+		</action>
+		<action name="baseForm" path="/member.reply.index"
+			scope="request" type="org.notepress.core.action.MemberAction"
+			parameter="replyIndex" validate="false">
+			<forward name="target" path="reply.index" />
+		</action>
+		<!--未登录人员可访问的地址-->
+
+		<!--栏目首页-->
+		<action name="baseForm" path="/c" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="categoryIndex"
+			validate="false">
+			<forward name="target" path="category.index" />
+		</action>
+
+		<!--故事首页-->
+		<action name="baseForm" path="/s" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="storyIndex"
+			validate="false">
+			<forward name="target" path="story.index" />
+		</action>
+
+		<!--文件夹首页-->
+		<action name="baseForm" path="/f" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="folderIndex"
+			validate="false">
+			<forward name="target" path="folder.index" />
+		</action>
+
+		<!--文件页面-->
+		<action name="baseForm" path="/file" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="fileIndex"
+			validate="false">
+			<forward name="target" path="file.index" />
+		</action>
+
+		<!--网站页面-->
+		<action name="baseForm" path="/index" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="index"
+			validate="false">
+			<forward name="target" path="index" />
+		</action>
+
+		<!--标签页面-->
+		<action name="baseForm" path="/t" scope="request"
+			type="org.notepress.core.action.WebAction" parameter="tagIndex"
+			validate="false">
+			<forward name="target" path="tag.index" />
+		</action>
+
+		<!--检测账号是否重复-->
+		<action name="baseForm" path="/duplicateAccount" scope="request"
+			type="org.notepress.security.action.AccountAction"
+			parameter="duplicateAccount" validate="false" />
+
+		<!--检测email是否重复-->
+		<action name="baseForm" path="/duplicateEmail" scope="request"
+			type="org.notepress.security.action.AccountAction"
+			parameter="duplicateEmail" validate="false" />
+
+		<!--创建账号-->
+		<action name="baseForm" path="/createAccount" scope="request"
+			type="org.notepress.security.action.AccountAction"
+			parameter="createAccount" validate="false" />
+		<!--未登录人员可访问的地址-->
+
+	</action-mappings>
+	<controller>
+		<set-property property="processorClass"
+			value="org.apache.struts.tiles.TilesRequestProcessor" />
+	</controller>
+
+	<message-resources
+		parameter="org.ajava.letterpress.struts.ApplicationResources" />
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/config/tiles/tiles-config.xml" />
+		<set-property property="moduleAware" value="true" />
+		<set-property property="definitions-parser-validate"
+			value="true" />
+	</plug-in>
+</struts-config>
+

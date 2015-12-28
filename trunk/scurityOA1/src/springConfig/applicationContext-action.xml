@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	                    ">
+<!--*************************注入services层接口到action******************************-->
+
+<!-- 用户action 注入services接口 -->
+<bean id="userAction" class="accp.action.UserAction">
+<property name="services" ref="userServices"/>
+<property name="baseUserServices" ref="baseServices"/>
+<property name="baseRoleServices" ref="baseServices"/>
+<property name="baseDepartmentServices" ref="baseServices"/>
+<property name="basePositionServices" ref="baseServices"/>
+</bean>
+
+<!-- registerAction  注入services接口 -->
+<bean id="userRegisterAction" class="accp.action.RegisterAction">
+<property name="services" ref="userServices"/>
+<property name="baseUserServices" ref="baseServices"/>
+<property name="baseRoleServices" ref="baseServices"/>
+</bean>
+
+<!-- resc action -->
+<bean id="rescAction" class="accp.action.RescAction">
+<property name="rescServices" ref="rescServices"/>
+<property name="baseRescServices" ref="baseServices"/>
+<property name="baseRoleServices" ref="baseServices"/>
+</bean>
+
+
+<!-- role action -->
+<bean id="roleAction" class="accp.action.RoleAction">
+<property name="roleServices" ref="roleServices"/>
+<property name="baseRoleServices" ref="baseServices"/>
+<property name="baseRescServices" ref="baseServices"/>
+</bean>
+
+<!-- claimVoucherDao aciton 业务操作 -->
+<bean id="claimVoucherAction" class="com.oa.action.ClaimVoucherAction" >
+<property name="claimVoucherService" ref="claimVoucherService"/> 
+<property name="baseVoucherServices" ref="baseServices"/>
+<property name="baseClaimVoucherDetailServices" ref="baseServices"/>
+</bean>
+
+<!-- deparmenterCheckVoucherAction 部门经理action -->
+<bean id="deparmenterCheckVoucher" class="com.oa.action.DeparmenterVoucher">
+<property name="claimVoucherService" ref="claimVoucherService"/>
+<property name="baseVoucherServices" ref="baseServices"/>
+<property name="baseClaimVoucherDetailServices" ref="baseServices"/>
+<property name="baseCheckResultServices" ref="baseServices"/>
+</bean>
+
+<!-- bossCheckVoucher 总经理action -->
+<bean id="bossCheckVoucher" class="com.oa.action.BossCheckVoucher">
+<property name="claimVoucherService" ref="claimVoucherService"/>
+<property name="baseVoucherServices" ref="baseServices"/>
+<property name="baseClaimVoucherDetailServices" ref="baseServices"/>
+<property name="baseCheckResultServices" ref="baseServices"/>
+</bean>
+
+
+<!-- financeCheckVoucher 财务action -->
+<bean id="financeCheckVoucher" class="com.oa.action.FinanceCheckVoucher">
+<property name="claimVoucherService" ref="claimVoucherService"/>
+<property name="baseVoucherServices" ref="baseServices"/>
+<property name="baseClaimVoucherDetailServices" ref="baseServices"/>
+<property name="baseCheckResultServices" ref="baseServices"/>
+<property name="oaJdbcDao" ref="dataIOC"></property>
+</bean>
+
+
+</beans>

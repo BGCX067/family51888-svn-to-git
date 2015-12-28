@@ -1,0 +1,2 @@
+﻿
+document.write("<select onChange=Link_Open(this.options[this.selectedIndex].value,'link')><option value=''>====国家系统网站====</option><option value='http://www.baidu.com'>百度</option><option value='http://ee'>恩恩</option></select>");

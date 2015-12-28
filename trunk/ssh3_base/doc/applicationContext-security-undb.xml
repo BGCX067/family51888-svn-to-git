@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+    
+    <global-method-security>
+    	<protect-pointcut expression="execution(* com.strongit..*.create*(..))"
+			access="ROLE_ADMIN"/>
+			<protect-pointcut expression="execution(* com.strongit..*.delete*(..))"
+			access="ROLE_ADMIN"/>
+			<protect-pointcut expression="execution(* com.strongit..*.update*(..))"
+			access="ROLE_ADMIN"/>
+    </global-method-security>
+    
+    <!-- auto-config="true" 自动配置注销、session等 -->
+    <http auto-config="true" access-denied-page="/common/403.jsp">
+    
+    	<intercept-url pattern="/css/**" filters="none" />
+		<intercept-url pattern="/img/**" filters="none" />
+		<intercept-url pattern="/js/**" filters="none" />
+		<intercept-url pattern="/common/**" filters="none" />
+    
+    
+    	<intercept-url pattern="/admin.jsp" access="ROLE_ADMIN"/>
+    	<intercept-url pattern="/**" access="ROLE_USER"/>
+    	<intercept-url pattern="/login.jsp"  filters="none"/>
+    	<!-- 指定自己的登录验证页面 -->
+    	<form-login login-page="/login.jsp"
+			authentication-failure-url="/login.jsp?error=true"
+			always-use-default-target="true" default-target-url="/gradeAction.do?method=listGrade" />
+		
+    </http>
+        
+    <authentication-provider >
+    	<!--  <password-encoder hash="md5"/> -->
+    	<user-service>
+    		<user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER"/>
+    		<user name="user" password="user" authorities="ROLE_USER"/>
+    	</user-service>
+    </authentication-provider>
+    
+    <!-- 国际化支持，会找jar包中的messge文件 -->
+     <beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <beans:property name="basename" value="org/springframework/security/messages" />
+    </beans:bean>
+    
+</beans:beans>
+ 

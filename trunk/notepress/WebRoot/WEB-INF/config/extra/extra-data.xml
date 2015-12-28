@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extra>
+	<file>
+		<!--<data>
+			<id>os</id>
+			<allowBlank>false</allowBlank>
+			<fieldLabel>运行平台</fieldLabel>
+			<maxLength>200</maxLength>
+		</data>
+		<data>
+			<id>language</id>
+			<allowBlank>false</allowBlank>
+			<fieldLabel>文件语言</fieldLabel>
+			<maxLength>200</maxLength>
+		</data>		
+		<data>
+			<id>license</id>
+			<allowBlank>false</allowBlank>
+			<fieldLabel>授权形式</fieldLabel>
+			<maxLength>200</maxLength>
+		</data>-->
+	</file>	
+</extra>

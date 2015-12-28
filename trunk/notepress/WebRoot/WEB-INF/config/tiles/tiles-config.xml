@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+	<definition name="success" path="/WEB-INF/jsp/common/result.jsp"/>
+	<definition name="error" path="/WEB-INF/jsp/common/error.jsp"/>
+	<definition name="console" path="/WEB-INF/jsp/back/console.jsp"/>
+	<definition name="story" path="/WEB-INF/jsp/back/story.jsp"/>
+	<definition name="category" path="/WEB-INF/jsp/back/category.jsp"/>
+	<definition name="media" path="/WEB-INF/jsp/back/media.jsp"/>
+	<definition name="category.index" path="/WEB-INF/jsp/front/category.jsp"/>
+	<definition name="story.index" path="/WEB-INF/jsp/front/story.jsp"/>
+	<definition name="folder.index" path="/WEB-INF/jsp/front/folder.jsp"/>
+	<definition name="file.index" path="/WEB-INF/jsp/front/file.jsp"/>
+	<definition name="tag.index" path="/WEB-INF/jsp/front/tag.jsp"/>
+	<definition name="member.index" path="/WEB-INF/jsp/front/member.jsp"/>
+	<definition name="reply.index" path="/WEB-INF/jsp/front/reply.jsp"/>
+	<definition name="index" path="/WEB-INF/jsp/front/index.jsp"/>
+</tiles-definitions>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/console.index.do" location="950,1350" dimension="346,84" />
+  <StrutsActivity path="/story.add.do" location="1250,450" dimension="316,84" />
+  <StrutsActivity path="/story.edit.do" location="650,650" dimension="316,84" />
+  <StrutsActivity path="/story.delete.do" location="1250,650" dimension="316,84" />
+  <StrutsActivity path="/story.view.do" location="50,1450" dimension="316,84" />
+  <StrutsActivity path="/story.list.do" location="50,850" dimension="316,84" />
+  <StrutsActivity path="/option.add.do" location="650,450" dimension="334,84" />
+  <StrutsActivity path="/option.edit.do" location="50,550" dimension="334,84" />
+  <StrutsActivity path="/option.delete.do" location="1250,950" dimension="334,84" />
+  <StrutsActivity path="/option.list.do" location="50,1050" dimension="334,84" />
+  <StrutsActivity path="console.index" location="50,250" dimension="118,48" />
+  <StrutsActivity path="story.add" location="650,850" dimension="94,48" />
+  <StrutsActivity path="story.edit" location="950,850" dimension="100,48" />
+  <StrutsActivity path="story.view" location="650,1450" dimension="100,48" />
+  <StrutsActivity path="story.list" location="650,950" dimension="100,48" />
+  <StrutsActivity path="option.index" location="1250,1150" dimension="112,48" />
+  <StrutsActivity path="story.delete" location="1250,850" dimension="112,48" />
+  <StrutsActivity path="add-article" location="50,350" dimension="106,48" />
+  <StrutsActivity path="edit-article" location="650,1050" dimension="112,48" />
+  <StrutsActivity path="delete-article" location="950,1050" dimension="124,48" />
+  <StrutsActivity path="list-article" location="650,1150" dimension="112,48" />
+  <StrutsActivity path="add-story" location="950,1150" dimension="94,48" />
+  <StrutsActivity path="edit-story" location="50,1250" dimension="100,48" />
+  <StrutsActivity path="delete-story" location="350,1250" dimension="112,48" />
+  <StrutsActivity path="list-story" location="650,1250" dimension="100,48" />
+  <StrutsActivity path="add.story" location="950,1250" dimension="94,48" />
+  <StrutsActivity path="edit.story" location="50,1350" dimension="100,48" />
+  <StrutsActivity path="delete.story" location="350,1350" dimension="112,48" />
+  <StrutsActivity path="list.story" location="650,1350" dimension="100,48" />
+  <StrutsTransition id="/option.add.do,success,option.index,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="984,492" />
+      <AbsolutePoint location="1089,492" />
+      <AbsolutePoint location="1089,1174" />
+      <AbsolutePoint location="1250,1174" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/story.list.do,success,story.list,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="208,934" />
+      <AbsolutePoint location="208,974" />
+      <AbsolutePoint location="650,974" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/console.index.do,success,console.index,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1123,1350" />
+      <AbsolutePoint location="1123,274" />
+      <AbsolutePoint location="168,274" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/story.edit.do,success,story.edit,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="951,734" />
+      <AbsolutePoint location="951,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/story.add.do,success,story.add,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1250,492" />
+      <AbsolutePoint location="1183,492" />
+      <AbsolutePoint location="1183,779" />
+      <AbsolutePoint location="697,779" />
+      <AbsolutePoint location="697,850" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/story.view.do,success,story.view,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="366,1474" />
+      <AbsolutePoint location="650,1474" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+

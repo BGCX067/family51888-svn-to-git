@@ -1,0 +1,107 @@
+﻿
+
+/==========================================================================================
+ *
+ *                      2011-09-19 说明
+ *
+ ==========================================================================================/
+ 
+ 1、加入spring security 2权限控制
+2、doc目录下的applicationContext-security-undb.xml 是没有关联数据库用户角色权限信息的配置
+文件applicationContext-security-mysql.xml 则是和mysql数据库关联用户相关信息的配置
+
+/==========================================================================================
+ *
+ *                      2011-09-18 说明
+ *
+ ==========================================================================================/
+
+关于框架说明
+
+struts1.2
+spring2.0
+hibernate3.0
+
+
+一、表现层
+控制页面跳转，action生成方式交由spring管理
+  		<action path="/pubAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"/>
+
+二、业务层
+sping注入
+AOP事务控制 参看：applicationContext-transaction.xml
+
+三、数据层
+采用泛型通用DAO
+以Grade为例
+1、gradeModel需实现框架中的abstractModel
+public class GradeModel extends AbstractModel
+2、继承框架中的业务接口
+public interface GradeEbi extends Ebi<GradeModel,GradeQueryModel>
+3、需继承框架中的抽象业务类，以及实现业务接口
+public class GradeEbo extends AbstractEbo<GradeModel,GradeQueryModel> implements GradeEbi 
+
+SPRING注入
+<!-- 对应实体类的Action  -->
+	<bean name="/gradeAction"
+		class="com.strongit.itsm.example.action.GradeAction">
+		<property name="gradeEbi" ref="gradeEbo" />
+	</bean>
+
+	<!-- 对应实体类EBO实现类   -->
+	<bean id="gradeEbo"
+		class="com.strongit.itsm.example.service.ebo.GradeEbo">
+		<property name="dao" ref="gradeDAOImpl" />
+	</bean>
+
+	<!-- 对应实体类DAO的实现类  -->
+	<bean id="gradeDAOImpl"
+		class="com.strongit.itsm.example.dao.impl.GradeDAOHibernateImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+四、数据库创建
+
+修改配置文件jdbc.properties中的属性
+
+## auto schema export
+hibernate.hbm2ddl.auto = update
+
+将这条修改为
+
+hibernate.hbm2ddl.auto = create
+
+在工程启动时将自动创建数据库表
+
+
+
+框架使用实例访问地址：
+
+http://localhost:8080/ssh3_base/
+
+/==========================================================================================
+ *
+ *                      2011-09-10 版本模板说明
+ *
+ ==========================================================================================/
+
+关于框架说明
+
+struts1.2
+spring2.0
+hibernate3.0
+
+
+功能变更：
+
+
+
+文档变更：
+
+
+应用变更：
+
+
+缺陷修正：
+

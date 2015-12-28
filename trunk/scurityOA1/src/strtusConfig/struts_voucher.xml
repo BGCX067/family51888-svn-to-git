@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+ <!-- 员工操作action -->
+<package name="voucherPackage" namespace="/" extends="jasperreports-default">
+<action name="voucher_*" class="claimVoucherAction" method="{1}">
+<result name="showVoucher">/oA/OA1/indexs.jsp</result>
+<result name="error">/error/error.jsp</result>
+<result name="addVoucherOK" type="redirectAction">voucher_findActionVoucher.action</result>
+<result name="input">/oA/OA1/indexs.jsp</result>
+</action>
+
+ <!-- 部门经理操作action -->
+<action name="dm_*" class="deparmenterCheckVoucher" method="{1}">
+<result name="error">/error/error.jsp</result>
+<result name="input">/oA/OA1/indexs.jsp</result>
+</action>
+
+ <!-- 总经理操作action -->
+ <action name="boss_*" class="bossCheckVoucher" method="{1}">
+<result name="error">/error/error.jsp</result>
+<result name="input">/oA/OA1/indexs.jsp</result> 
+ </action>
+ 
+  <!-- 财务理操作action -->
+ <action name="finance_*" class="financeCheckVoucher" method="{1}">
+<result name="error">/error/error.jsp</result>
+<result name="input">/oA/OA1/indexs.jsp</result> 
+
+<!-- 财务下载报销单 jasperreports 报销单报表-->
+<result name="showXls" type="jasper">
+<param name="location">jasper/voucherList.jasper</param>
+<param name="contentDisposition">filename="voucher.xls"</param>
+<param name="dataSource">downLoadVoucherList</param>
+<param name="format">XLS</param>
+</result>
+
+<!-- 查看统计报表图 -->
+<result name="dispalyJasperChart" type="jasper">
+<param name="location">jasper/chartVoucher.jasper</param>
+<param name="dataSource">displayChartNew</param>
+<param name="format">HTML</param>
+<!-- 一定要配制这个参数，不然图片路径就找不到-->
+<param name="imageServletUrl">  
+       <![CDATA[/image?image=]]></param>  
+       
+</result>
+<!-- fusionChar config -->
+<result name="fusionChar">/oA/OA1/generalManager/displayFusion.jsp</result>
+</action>
+ 
+ <!-- 天气  -->
+ <action name="webWeatherAction" class="com.oa.action.WeatherInfo"> 
+ <result name="error">/error/error.jsp</result>
+ <result name="input">/oA/OA1/indexs.jsp</result> 
+ </action>
+
+
+
+</package>
+</struts>

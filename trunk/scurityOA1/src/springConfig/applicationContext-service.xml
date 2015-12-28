@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	                    ">
+	                    
+<!--*************************hibernateTemplate******************************-->
+ <!-- BaseDaoImpl注入 hibernateTemplate-->
+ <bean id="baseDao" class="accp.dao.imple.BaseDaoImpl">
+ <property name="hibernateTemplate" ref="hibernateTemplate"/>
+ </bean>
+ 
+  <!-- RescDaoImpl注入 hibernateTemplate  || parent父类是谁 同样实现的继承关系-->
+ <bean id="rescDao" class="accp.dao.imple.RescDaoImpl" parent="baseDao">
+ <!-- <property name="hibernateTemplate" ref="hibernateTemplate" /> -->
+ </bean>
+
+ <!-- RoleDaoImpl注入 hibernateTemplate-->
+ <bean id="roleDao" class="accp.dao.imple.RoleDaoImpl" parent="baseDao"/>
+
+ <!-- UserDaoImpl注入 hibernateTemplate -->
+ <bean id="userDao" class="accp.dao.imple.UserDaoImpl" parent="baseDao">
+ <!-- <property name="hibernateTemplate" ref="hibernateTemplate" /> -->
+ </bean>
+ 
+ <!-- ClaimVoucherDaoImpl OA业务处理 -->
+ <bean id="claimVoucherDao" class="com.oa.dao.impl.ClaimVoucherDaoImpl" parent="baseDao">
+
+ </bean>
+ 
+
+<!--*************************注入dao层接口到services层******************************-->
+
+<!-- baseDao到业务层    parent="baseDao"-->
+<bean id="baseServices" class="accp.services.imple.BaseServicesImple" >
+<property name="basedao" ref="baseDao"/> 
+</bean>
+
+
+ <!-- user    方便真接调用基本操作类  hibernateTemplate-->
+ <bean id="userServices" class="accp.services.imple.UserServicesImple"> 
+ <property name="userDao" ref="userDao"/>
+ </bean>
+ 
+ <!-- 角色 -->
+ <bean id="roleServices" class="accp.services.imple.RoleServicesImple">
+ <property name="roleDao" ref="roleDao"/>
+ </bean>
+ 
+ <!-- 资源 -->
+ <bean id="rescServices" class="accp.services.imple.RescServicesImple">
+ <property name="rescDao" ref="rescDao"/>
+ </bean>
+
+<!--**************************OA工作 业务操作注入 *********************-->
+
+<bean id="claimVoucherService" class="com.oa.service.impl.ClaimVoucherServiceImpl" >
+<property name="claimVoucherDao" ref="claimVoucherDao"></property>
+</bean>
+
+
+
+
+</beans>

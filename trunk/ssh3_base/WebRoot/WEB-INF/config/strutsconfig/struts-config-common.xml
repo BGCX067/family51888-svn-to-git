@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+  <data-sources />
+  <form-beans />
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+  		<action path="/pubAction"
+			type="org.springframework.web.struts.DelegatingActionProxy"/>
+		<action path="/login" parameter="method" scope="request"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="listGrade" path="/WEB-INF/jsp/grade/listGrade.jsp"></forward>
+			</action>
+  </action-mappings>
+  <message-resources parameter="ApplicationResources" />
+</struts-config>
+

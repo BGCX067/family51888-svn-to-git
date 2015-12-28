@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+           http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+	<!-- 使用AOP记录日志  -->
+	<bean id="log" class="com.strongit.framework.util.LogHandler">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<!-- create -->
+	<aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut id="AllCreateMethods" expression="execution(* com.strongit..service.*.create*(..))"/>
+			<!--<aop:around method="recordLog1"  pointcut-ref="AllCreateMethods"/>-->
+			<aop:after-returning method="recordLog"  pointcut-ref="AllCreateMethods" returning="logInfo"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- update -->
+	<aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut id="AllUpdateMethods" expression="execution(* com.strongit..service.*.update*(..))"/>
+			<!--<aop:around method="recordLog1"  pointcut-ref="AllCreateMethods"/>-->
+			<aop:after-returning method="recordLog"  pointcut-ref="AllUpdateMethods" returning="logInfo"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+	<!-- delete -->
+	<aop:config>
+		<aop:aspect ref="log">
+			<aop:pointcut id="AllDeleteMethods" expression="execution(* com.strongit..service.*.delete*(..))"/>
+			<!--<aop:around method="recordLog1"  pointcut-ref="AllCreateMethods"/>-->
+			<aop:after-returning method="recordLog"  pointcut-ref="AllDeleteMethods" returning="logInfo"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
